@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:0;}
+
+.navbar {
+  overflow: hidden;
+  background-color: rgb(100,149,237);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  background-color: rgb(223,233,251);	
+  padding: 16px;
+  margin-top: 30px;
+  height: 80px; /* Used in this example to enable scrolling */
+}
+</style>
+<script>
+var i;
+var obj=
+{
+	xhr: new XMLHttpRequest(),
+	getFeed: function()
+	{
+		this.xhr.onreadystatechange = this.showFeed;
+		this.xhr.open("GET", "http://localhost/rss_ar.php",true);
+		this.xhr.send();
+
+	},
+	showFeed: function()
+	{
+		if(this.readyState == 4 && this.status == 200)
+		{
+			root = this.responseXML.documentElement;
+			channel = root.getElementsByTagName("channel")[0];
+			item = channel.getElementsByTagName("item");
+			for(i=0;i<item.length;i++){
+				title=item[i].getElementsByTagName("title")[0];
+				headline = title.firstChild.nodeValue;
+				link = item[i].getElementsByTagName("link")[0];
+				href = link.firstChild.nodeValue;
+				desc = item[i].getElementsByTagName("description")[0];
+				value = desc.firstChild.nodeValue;
+				anchor = document.createElement("a");
+				anchor.href = href;
+				anchor.innerHTML = headline;
+				para = document.createElement("div");
+				if(value.split(" ").length < 200){
+					
+					para.innerHTML = value;	
+				}
+				else{
+					para.innerHTML = value.substring(0,199);
+					extra=value.substring(199);
+					para.innerHTML += "Read More";
+					para.addEventListener("click", function(){this.innerHTML += extra})
+
+				}
+				//para.setAttribute("class","more");
+				document.body.appendChild(anchor);
+				document.body.appendChild(para);
+				console.log(value.split(" ").length);
+				console.log("hi")		
+			}	
+		}
+	}
+	//var cont = setInterval(getFeed,2000);
+}
+</script>
+</head>
+
+<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src= "jquery-3.5.0.min.js"></script>
+
+<div class="navbar">
+  <a href="home.html">Home</a>
+  <a href="en.html">RSS Engineering</a>
+  <a href="ec.html">RSS Economics</a>
+  <a href="ar.html">RSS Arts</a>
+  <a href="user_input.html">Improve Analytics</a>
+  <a href="goco.html">Good Colleges</a>
+  <h3 align="right" style="color:white;"><p>Contact us @college.adv.com<br/>Phone Number:9008085934</p></h3>
+</div>
+
+<div class="main">
+<br><br><br>
+<input type="button" value="GET FEED" onclick="obj.getFeed()"/><br>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src= "jquery-3.5.0.min.js"></script>
+
+<div class="navbar">
+  <a href="home.html">Home</a>
+  <a href="en.html">RSS Engineering</a>
+  <a href="ec.html">RSS Economics</a>
+  <a href="ar.html">RSS Arts</a>
+  <a href="user_input.html">Improve Analytics</a>
+  <a href="goco.html">Good Colleges</a>
+  <h3 align="right" style="color:white;"><p>Contact us @college.adv.com<br/>Phone Number:9008085934</p></h3>
+</div>
+
+<div class="main">
+<form action="http://localhost:5000/home" method="post">
+<br><br><br><br><br><center>
+<font size="5"><p><b>Hey there ! Welcome to College Advisor !<br/>We are the number one advisory firm for all your college needs from A-Z!<br/>Any problem at all,come here and solve it all!</p></b>
+<b></font>
+<font size="4">
+<p>If you would like to try out our recommender system,please enter your details below and submit</p>
+<br><br></font>
+Gender: <select id="gender" name="gender">
+		 	<option value="male">Male
+			<option value="female">Female
+		</select><br><br>
+PCM(%): <select id="pcm" name="pcm">
+			<option value="pcm80">80</option>
+			<option value="pcm60">60</option>
+			<option value="pcm40">40</option>
+		</select><br><br>
+<input type="submit"><br><br></b>
+</form>
+
+</body>
+</html>

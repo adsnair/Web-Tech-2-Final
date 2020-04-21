@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="jquery-3.5.0.min.js"></script>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="home.html">Home</a>
+  <a href="en.html">RSS Engineering</a>
+  <a href="ec.html">RSS Economics</a>
+  <a href="ar.html">RSS Arts</a>
+  <a class="active" href="user_input.html">Improve Analytics</a>
+  <a href="goco.html">Good Colleges</a>
+  <h3 align="right" style="color:white;"><p>Contact us @college.adv.com<br/>Phone Number:9008085934</p></h3>
+</div>
+
+<div class="main">	
+<form action="http://localhost:5000/user_input" method="post" >
+<center>
+<font size="5"><br><br><p><b>To run our recommendation system,we need user data.<br/>The more user data we get,more the accuracy.<br/>If you would like to contribute,please fill in the boxes below and click 'Submit' !</b></p>
+</font>
+<br><br><br><br>
+<b>
+<!--College: <input type="text" name="college" required><br><br>-->
+Gender: <select id="gender" name="gender">
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+		</select><br><br>
+Interests: <select id="interests" name="interests">
+			<option value="math-science">Math-Science</option>
+			<option value="arts">Arts</option>
+			<option value="economics">Economics</option>
+		</select><br><br>
+PCM(%): <select id="pcm" name="pcm">
+			<option value="80">80</option>
+			<option value="60">60</option>
+			<option value="40">40</option>
+		</select><br><br>
+<input type="submit"><br><br>
+</b>
+</form>
+
+
+</body>
+</html>
